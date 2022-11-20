@@ -1,10 +1,11 @@
 import { login, register, updateUser } from "../controllers/authControllers.js";
-import { testUser } from "../middleware/testUser.js";
+
 import express from "express";
 import authenticateUser from "../middleware/auth.js";
 const router = express.Router();
 
 import rateLimiter from "express-rate-limit";
+import testUser from "../middleware/testUser.js";
 
 const apiLimiter = rateLimiter({
   windowMs: 15 * 60 * 1000, // 15 minutes

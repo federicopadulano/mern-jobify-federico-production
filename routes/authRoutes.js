@@ -1,4 +1,5 @@
 import { login, register, updateUser } from "../controllers/authControllers.js";
+import { testUser } from "../middleware/testUser.js";
 import express from "express";
 import authenticateUser from "../middleware/auth.js";
 const router = express.Router();
@@ -13,6 +14,6 @@ const apiLimiter = rateLimiter({
 
 router.route("/register").post(apiLimiter, register);
 router.route("/login").post(apiLimiter, login);
-router.route("/update").patch(authenticateUser, updateUser);
+router.route("/update").patch(authenticateUser, testUser, updateUser);
 
 export default router;
